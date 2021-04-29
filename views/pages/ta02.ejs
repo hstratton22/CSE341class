@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <!--https://github.com/byui-cse/cse341-course/blob/master/docs/lesson02/team-solution/ta02EJS_solution.ejs-->
+        <div class="ta02">
+          <form action="/ta02/addUser" method="POST">
+            <label><input type="text" name="username"></label>
+            <button type="submit">Add User</button>
+          </form>
+        </div>
+        <div class="ta02">
+          <form action="/ta02/removeUser" method="POST">
+            <label><input type="text" name="removeName"></label>
+            <button type="submit">Remove User</button>
+          </form>
+        </div>
+        <% if (message)  { %>
+        <div class="none">
+            <p><%= message %></p>
+        </div>
+        <% } %>
+        <div class="output responses">
+          <p>List of users: </p>
+          <% if (users.length > 0) { %>
+            <ul>
+              <% users.forEach((user)=> { %>
+                <li>
+                  <%= user.name %>
+                </li>
+                <% }) %>
+            </ul>
+            <% } else { %>
+              <p>No Users Found!</p>
+              <% } %>
+
+        </div>
+        
+      </div>
+    </div>
+    
+</body>
+
+</html>

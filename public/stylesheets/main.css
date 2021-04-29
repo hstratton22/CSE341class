@@ -1,0 +1,91 @@
+.jumbotron {
+  background: #0065BD;
+  color: white;
+  padding-bottom: 80px; 
+}
+
+.jumbotron .btn-primary {
+  background: #845ac7;
+  border-color: #845ac7; 
+}
+
+.jumbotron .btn-primary:hover {
+  background: #7646c1; 
+}
+  
+.jumbotron p {
+  color: #d9ccee;
+  max-width: 75%;
+  margin: 1em auto 2em; 
+}
+  
+.navbar + .jumbotron {
+  margin-top: -20px; 
+}
+  
+.jumbotron .lang-logo {
+  display: block;
+  background: #B01302;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 2px solid white; 
+}
+.jumbotron .lang-logo img {
+  max-width: 100%; 
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+}
+.mySubmit {
+  color:black;
+  border-radius:20px;
+}
+.myForm {
+  color:black;
+  
+}
+.myForm input {
+  border:2px solid black;
+}
+.responses {
+  margin-left: 30%;
+
+}
+.responses p{
+  color:white;
+  text-align: left;
+
+}
+.responses ul {
+  display:flex;
+  flex-direction: column;
+  margin-left:30%;
+}
+
+form {
+  color:black;
+  
+}
+
+ul {
+  list-style-type: none;
+}
+.output ul, .output li {
+  margin-left:1rem;
+  text-align: left;
+}
+.ta02 {
+  display:flex;
+  justify-content: left;
+  margin-left:35%;
+
+}
+.ta02 input {
+  width:150px;
+  margin-left:10px;
+}
