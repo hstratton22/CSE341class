@@ -7,38 +7,41 @@ const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: false }));
 let users = [];
-let message ='';
+let message = '';
 
 router.get('/', (req, res, next) => {
+
     res.render('pages/teamActivities/ta02', {
         title: 'Team Activity 02',
         path: '/ta02', // For pug, EJS 
         activeTA03: true, // For HBS
         contentCSS: true, // For HBS
-        users: users, 
+        users: users,
         message: message
     });
 });
+
 router.post('/removeUser', (req, res, next) => {
     let removeName = req.body.removeName;
     let findName = users.findIndex(user => user.name === removeName);
-    if (findName == -1){
+    if (findName == -1) {
         message = "User not found."
     }
     else {
         let newUsers = users.filter(user => user.name != removeName);
         users = newUsers;
-        message= '';
-        
+        message = '';
+
 
     }
-    
-    
+
+
     //console.log("newUsers: " + newUsers);
-    res.redirect('/');//pages/teamActivities/ta02
+    res.redirect('./');//pages/teamActivities/ta02
 
 });
-router.post('/addUser', (req, res, next) => {
+router.post('/addUser', (req, res, next) => {///teamActivities//
+
     let addName = req.body.username;
     //let hasName = users.includes(addName);
     const findName = users.findIndex(user => user.name === addName);
@@ -49,7 +52,8 @@ router.post('/addUser', (req, res, next) => {
         users.push({ name: addName });
         message = '';
     }
-    res.redirect('pages/teamActivities/ta02' );//pages/teamActivities/ta02
+    res.redirect('./');//pages/teamActivities/ta02
+
 });
 
 
