@@ -10,7 +10,7 @@ let users = [];
 let message ='';
 
 router.get('/', (req, res, next) => {
-    res.render('pages/ta02', {
+    res.render('pages/teamActivities/ta02', {
         title: 'Team Activity 02',
         path: '/ta02', // For pug, EJS 
         activeTA03: true, // For HBS
@@ -35,7 +35,7 @@ router.post('/removeUser', (req, res, next) => {
     
     
     //console.log("newUsers: " + newUsers);
-    res.redirect('/ta02');
+    res.redirect('/');//pages/teamActivities/ta02
 
 });
 router.post('/addUser', (req, res, next) => {
@@ -49,7 +49,7 @@ router.post('/addUser', (req, res, next) => {
         users.push({ name: addName });
         message = '';
     }
-    res.redirect('/ta02' );
+    res.redirect('pages/teamActivities/ta02' );//pages/teamActivities/ta02
 });
 
 

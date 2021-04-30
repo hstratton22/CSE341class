@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <% include ../includes/header.ejs %>
+  <% include ../../includes/header.ejs %>
 </head>
 
 <body>
-  <% include ../includes/nav.ejs %>
+  <% include ../../includes/nav.ejs %>
     <div class="jumbotron text-center">
       <div class="container">
         <h1>
@@ -14,13 +14,13 @@
         </h1>
         <!--https://github.com/byui-cse/cse341-course/blob/master/docs/lesson02/team-solution/ta02EJS_solution.ejs-->
         <div class="ta02">
-          <form action="/ta02/addUser" method="POST">
+          <form action="./addUser" method="POST">
             <label><input type="text" name="username"></label>
             <button type="submit">Add User</button>
           </form>
         </div>
         <div class="ta02">
-          <form action="/ta02/removeUser" method="POST">
+          <form action="./ta02/removeUser" method="POST">
             <label><input type="text" name="removeName"></label>
             <button type="submit">Remove User</button>
           </form>
