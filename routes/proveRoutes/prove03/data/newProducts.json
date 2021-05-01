@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "title": "blackeyed Susan",
+        "imageUrl": "../public/images/blackeyedSusan.jpeg ",
+        "price": "4.99"
+    },
+    {
+        "id": "2",
+        "title": "purple coneflower",
+        "imageUrl": "public/images/coneflower.jpeg",
+        "price": "4.99"
+    },
+    {
+        "id": "3",
+        "title": "gerber daisy",
+        "imageUrl": "public/images/gerberDaisy.jpeg ",
+        "price": "4.99"
+    },
+    {
+        "id": "4",
+        "title": "iris",
+        "imageUrl": "public/images/iris.jpeg",
+        "price": "4.99"
+    },
+    {
+        "id": "5",
+        "title": "lily",
+        "imageUrl": "public/images/lily.jpeg ",
+        "price": "4.99"
+    },
+    {
+        "id": "6",
+        "title": "peony",
+        "imageUrl": "public/images/peony.jpeg",
+        "price": "4.99"
+    },
+    {
+        "id": "7",
+        "title": "rose",
+        "imageUrl": "public/images/rose.jpeg ",
+        "price": "4.99"
+    },
+    {
+        "id": "8",
+        "title": "sunflower",
+        "imageUrl": "public/images/sunflower.jpeg",
+        "price": "4.99"
+    },
+    {
+        "id": "9",
+        "title": "poppy",
+        "imageUrl": "public/images/poppy.jpeg ",
+        "price": "4.99"
+    },
+    {
+        "id": "10",
+        "title": "tulip",
+        "imageUrl": "public/images/tulip.jpeg",
+        "price": "4.99"
+    }
+]
