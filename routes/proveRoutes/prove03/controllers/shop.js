@@ -4,7 +4,7 @@ const Cart = require('../models/cart');
 
 exports.getProducts = (req, res, next) => {
     Product.fetchAll((products) => {
-        res.render('pages/prove03/shop/product-list', {
+        res.render('pages/proveAssignments/prove03/shop/product-list', {
             prods: products,
             pageTitle: 'All Products',
             path: '/products',
@@ -15,7 +15,7 @@ exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
     Product.findById(prodId, product => {
         //console.log(product);
-        res.render('pages/prove03/shop/product-detail', {
+        res.render('pages/proveAssignments/prove03/shop/product-detail', {
             product: product,
             pageTitle: product.title,
             path: '/products'
@@ -24,7 +24,7 @@ exports.getProduct = (req, res, next) => {
 };
 exports.getIndex = (req, res, next) => {
     Product.fetchAll((products) => {
-        res.render('pages/prove03/shop/index', {
+        res.render('pages/proveAssignments/prove03/shop/index', {
             prods: products,
             pageTitle: 'Shop',
             path: '/',
@@ -41,7 +41,7 @@ exports.getCart = (req, res, next) => {
                     cartProducts.push({ productData: product, qty: cartProductData.qty });
                 }
             }
-            res.render('pages/prove03/shop/cart', {
+            res.render('pages/proveAssignments/prove03/shop/cart', {
                 path: '/cart',
                 pageTitle: 'Your cart',
                 products: cartProducts
@@ -62,18 +62,18 @@ exports.postCartDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
     Product.findById(prodId, product => {
         Cart.deleteProduct(prodId, product.price);
-        res.redirect('pages/prove03/cart');
+        res.redirect('pages/proveAssignments/prove03/cart');
     });
 };
 exports.getCheckout = (req, res, next) => {
-    res.render('pages/prove03/shop/checkout', {
+    res.render('pages/proveAssignments/prove03/shop/checkout', {
         path: '/checkout',
         pageTitle: 'Checkout'
     });
 
 }
 exports.getOrders = (req, res, next) => {
-    res.render('pages/prove03/shop/orders', {
+    res.render('pages/proveAssignments/prove03/shop/orders', {
         path: '/orders',
         pageTitle: 'Your Orders'
     });
