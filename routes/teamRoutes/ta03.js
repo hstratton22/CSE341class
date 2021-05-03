@@ -2,21 +2,12 @@
 const express = require('express');
 const router = express.Router();
 /*
-var jsonEngine = require('../../controller/w?);
-*/
-//https://byui-cse.github.io/cse341-course/lesson03/items.json
-/*fetch('https://byui-cse.github.io/cse341-course/lesson03/items.json')
-.then(res => res.json())
-.then((out) => {
-    console.log('Output: ', out);
-}).catch(err => console.error(err));
-?
-*/
+var jsonEngine = require('../../controller/w3);
 
-/*router.get('/', jsonEngine.processJson
+router.get('/', jsonEngine.processJson
     .post('/', (req, res, next) => {
         let searchedValue = req.body.search ?;
-        let fileterData = global.jsonResponse ?;
+        let filterData = global.jsonResponse ?;
         console.log(filteredData);
         res.render('pages/teamActivities/ta03', {
             title: 'JSON search',
