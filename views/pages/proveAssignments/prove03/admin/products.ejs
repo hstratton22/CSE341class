@@ -28,7 +28,8 @@
                                 </div>
                                 <div class="card__actions">
                                     <a href="/proveAssignments/prove03/admin/edit-product/<%= product.id %>?edit=true" class="btn">Edit</a>
-                                    <form action="/proveAssignments/prove03/admin/delete-product" method="POST"><!--/proveAssignments/prove03/admin/-->
+                                    <form action="delete-product" method="POST"><!--/proveAssignments/prove03/admin/-->
+                                    <input type="hidden" name="productId" value="<%= product.id %>"> 
                                         <button class="btn" type="submit">Delete</button>
                                     </form>
 

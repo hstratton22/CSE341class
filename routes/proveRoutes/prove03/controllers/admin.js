@@ -69,8 +69,9 @@ exports.getProducts = (req, res, next) => {
     });
 }
 exports.postDeleteProduct = (req, res, next) => {
+    //console.log('inside post Delete1');
     const prodId = req.body.productId;
-    console.log(prodId);
+    //console.log(prodId);
     Product.deleteById(prodId);
     res.redirect('products');//pages/proveAssignments/prove03/
 }
