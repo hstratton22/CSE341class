@@ -53,7 +53,7 @@ exports.postEditProduct = (req, res, next) => {
         updatedPrice
     );
     updatedProduct.save();
-    res.redirect('pages/proveAssignments/prove03/admin/products');
+    res.redirect('products');
 
 };
 
@@ -70,6 +70,7 @@ exports.getProducts = (req, res, next) => {
 }
 exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
+    console.log(prodId);
     Product.deleteById(prodId);
-    res.redirect('pages/proveAssignments/prove03/admin/products');
+    res.redirect('products');//pages/proveAssignments/prove03/
 }
