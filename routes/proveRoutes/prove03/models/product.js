@@ -5,12 +5,12 @@ const Cart = require('./cart');
 
 const p = path.join(
     path.dirname(process.mainModule.filename),
-    'routes',//?
-    'proveRoutes',//?
-    'prove03',//?
+    'routes',
+    'proveRoutes',
+    'prove03',
     'data', 
     'products.json'
-);
+);  
 const getProductsFromFile = (cb) => {
     fs.readFile(p, (err, fileContent) => {
         //console.log(fileContent);
