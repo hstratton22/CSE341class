@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <% include ../../includes/header.ejs %>
 </head>
 
 <body>
   <% include ../../includes/nav.ejs %>
-<div class="jumbotron text-center">
-  <div class="container">
-    <h1><%= title %></h1>
-    <p>This is the placeholder for Team Activity 03</p>
-  </div>
-</div>
-<div class="container">
-  
-</div>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+
+        <p>This is the placeholder for Team Activity 03</p>
+      </div>
+    </div>
+    <div class="container">
+      <form class="center" action="../../routes/teamRoutes/ta03" method="POST">
+        <label>Enter search tag <input type="text" name="input1"></label>
+        <button type="submit">Search</button>
+      </form>
+
+    </div>
+    <% if (items === null) { %>
+      <h2 class="center"> items is null</h2>
+
+   
+      <% } else if (items.length > 0 ) { %>
+       
+      <div >
+        <h2 >Search Results: </h2>
+        <% for (let item of items) { %>
+        <ul>
+
+          <li><p><%= item.name %></p>
+            <p>$<%= item.price %></p>
+            <img src="<%= item.imageUrl %>" alt="<%= item.name%>" width="200">
+            <p><%= item.description %></p>
+          </li>
+          
+        </ul>
+
+      </div>
+      <% } %>
+      <% }  else { %>
+        <h2> No matches found</h2>
+        <% } %>
 
 
 </body>
+
 </html>
