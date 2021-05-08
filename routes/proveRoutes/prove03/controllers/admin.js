@@ -16,18 +16,18 @@ exports.postAddProduct = (req, res, next) => {
 
     const product = new Product(null, title, imageUrl, description, price);
     product.save();
-    res.redirect('/');
+    res.redirect('products');// /
 
 };
 exports.getEditProduct = (req, res, next) => {
     const editMode = req.query.edit;
     if (!editMode) {
-        return res.redirect('/');
+        return res.redirect('products');
     }
     const prodId = req.params.productId;
     Product.findById(prodId, product => {
         if (!product) {
-            return res.redirect('/');
+            return res.redirect('products');
         }
         res.render('pages/proveAssignments/prove03/admin/edit-product', {
             pageTitle: "Edit Product",
