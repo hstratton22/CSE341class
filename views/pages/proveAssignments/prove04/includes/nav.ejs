@@ -11,32 +11,33 @@
                     href="/proveAssignments/prove04/products">Products</a>
                 <!--/proveAssignments/prove03-->
             </li>
+            <% if (isAuthenticated ) { %>
             <li class="main-header__item">
                 <a class="<%= path === '/cart' ? 'active' : ' ' %>" href="/proveAssignments/prove04/cart">Cart</a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/orders' ? 'active' : ' ' %>" href="/proveAssignments/prove04/orders">Orders</a>
             </li>
-            <!--      <li class="main-header__item">
+                 <li class="main-header__item">
                 <a class="<%= path === '/admin/add-product' ? 'active' : ' ' %>" href="/proveAssignments/prove04/admin/add-product">Add Product</a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/admin/products' ? 'active' : ' ' %>" href="/proveAssignments/prove04/admin/products">Admin Products</a>
             </li>
-            -->
+            <% } %>
         </ul>
         <ul class="main-header__item-list">
-
+            <% if (!isAuthenticated ) { %>
             <li class="main-header__item">
-                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/proveAssignments/prove04/login">Login</a>
             </li>
-
-      <!--      <li class="main-header__item">
-                <form action="/logout" method="POST">
+            <% } else  {%>
+           <li class="main-header__item">
+                <form action="/proveAssignments/prove04/logout" method="POST">
                     <button type="submit">Logout</button>
                 </form>
-            </li>-->
-
+            </li>
+            <% } %>
         </ul>
     </nav>
 </header>

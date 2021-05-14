@@ -22,21 +22,51 @@ const routes = require('./routes');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const User = require('./routes/proveRoutes/prove04/models/user');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const cors = require('cors');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const corsOptions = {
   origin: "https://cse341class.herokuapp.com/",
   optionsSuccessStatus: 200
 };
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
 //"mongodb+srv://userCSE341class:cDqVlnEHSQkuE4bZ@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
+const MONGODB_URI = 'mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop';//?retryWrites=true&w=majority';
 
 const app = express();
+const store = new MongoDBStore({
+  uri: MONGODB_URI, 
+  collection: 'sessions'
+});
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(
+  session({
+  secret: 'my secret', 
+  resave:false, 
+  saveUninitialized: false,
+  store: store
+  
+ })
+);
+app.use((req, res, next) => {
+  if (!req.session.user){
+    return next();
+  }
+  User.findById(req.session.user._id)//('609583ea3f161a723a332044')
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => console.log(err));
+});
+
+app
    .set('views', path.join(__dirname, 'views'))
    .set('view engine', 'ejs')
   // .use((req, res, next) => {
-  //   User.findById('609b345ab2be0d2dab099330')//("609583ea3f161a723a332044")//("60947956b893eb8bf3e04661")
+  //   User.findById("609583ea3f161a723a332044")//('609b345ab2be0d2dab099330')////("60947956b893eb8bf3e04661")
   //     .then(user => {
   //       req.user = user;
   //       next();
@@ -62,8 +92,8 @@ mongoose
   )
   .then(result => {
     User.findOne().then(user => {
-      console.log("inside find user");
-      console.log(user)
+      //console.log("inside find user");
+      //console.log(user)
       if (!user) {
         const user = new User({
           name: 'me',//'userCSE341',//'me',

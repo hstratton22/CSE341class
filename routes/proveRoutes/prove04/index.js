@@ -11,6 +11,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 const adminRoutes = require('./routes/admin');
 //const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const authRoutes = require('./routes/auth');
 
 router
   //.use(express.static(path.join(__dirname, 'public', 'provePublic', 'prove03', 'public')))
@@ -25,6 +26,7 @@ router
   })
   .use('/admin', adminRoutes)
   .use(shopRoutes)
+  .use(authRoutes)
   .use(errorController.get404);
 
 

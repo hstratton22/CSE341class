@@ -25,7 +25,9 @@
                     </div>
                     <div class="card__actions">
                         <a href="/proveAssignments/prove04/products/<%= product._id %>" class="btn">Details</a><!--check path-->
-                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                        <% if (isAuthenticated ) { %>
+                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                        <% } %>
                     </div>
                    
                 </article>

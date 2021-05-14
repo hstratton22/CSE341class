@@ -10,6 +10,7 @@ exports.getProducts = (req, res, next) => {
             prods: products,
             pageTitle: 'All Products',
             path: '/products',
+            isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
         });
     })
     .catch(err => {
@@ -25,7 +26,8 @@ exports.getProduct = (req, res, next) => {
         res.render('pages/proveAssignments/prove04/shop/product-detail', {
             product: product,
             pageTitle: product.title,
-            path: '/products'
+            path: '/products',
+            isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
         });
     })
     .catch(err => console.log(err));
@@ -38,6 +40,7 @@ exports.getIndex = (req, res, next) => {
             prods: products,
             pageTitle: 'Shop',
             path: '/',
+            isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
         });
     })
     .catch(err => {
@@ -47,6 +50,7 @@ exports.getIndex = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
     req.user
+    //req.session.user
     .populate('cart.items.productId')
     .execPopulate()
     .then(user => {
@@ -55,7 +59,8 @@ exports.getCart = (req, res, next) => {
             res.render('pages/proveAssignments/prove04/shop/cart', {
                 path: '/cart',
                 pageTitle: 'Your cart',
-                products: products
+                products: products,
+                isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
             });
     })
     .catch(err => console.log(err));
@@ -79,7 +84,7 @@ exports.postCart = (req, res, next) => {
 
 exports.postCartDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
-    req.user
+    req.user//req.session.user//
     .removeFromCart(prodId)
     .then(result => {
         res.redirect('/proveAssignments/prove04/cart');//pages/  need shop?
@@ -87,7 +92,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
     .catch(err => console.log(err));
 };
 exports.postOrder = (req, res, next) => {
-    req.user
+    req.user//req.session.user//req.user
       .populate('cart.items.productId')
       .execPopulate()
       .then(user => {
@@ -121,7 +126,8 @@ exports.getOrders = (req, res, next) => {
     res.render('pages/proveAssignments/prove04/shop/orders', {//pages  //pages/proveAssignments/prove04/shop/ or shop/orders
         path: '/orders',
         pageTitle: 'Your Orders',
-        orders: orders
+        orders: orders,
+        isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
     });
 })
 .catch(err => console.log(err));
