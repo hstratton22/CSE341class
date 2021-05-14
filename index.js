@@ -20,14 +20,71 @@ const path = require('path');
 const routes = require('./routes');
 //const { use } = require('./routes');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
+const User = require('./routes/proveRoutes/prove04/models/user');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const corsOptions = {
+  origin: "https://cse341class.herokuapp.com/",
+  optionsSuccessStatus: 200
+};
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
+//"mongodb+srv://userCSE341class:cDqVlnEHSQkuE4bZ@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
 
 const app = express();
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
    .set('view engine', 'ejs')
-   .use('/', routes)
-   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  // .use((req, res, next) => {
+  //   User.findById('609b345ab2be0d2dab099330')//("609583ea3f161a723a332044")//("60947956b893eb8bf3e04661")
+  //     .then(user => {
+  //       req.user = user;
+  //       next();
+  //     })
+  //     .catch(err => console.log(err));
+  // })
+  .use(cors(corsOptions))
+  .use('/', routes);
+
+  const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    family: 4
+};
+//const MONGODB_URL = process.env.MONGODB_URL || //"mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
+//"mongodb+srv://userCSE341class:cDqVlnEHSQkuE4bZ@cluster0.3uz0q.mongodb.net/test?retryWrites=true&w=majority";
+
+mongoose
+  .connect(//other account('mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority')
+  MONGODB_URL, options
+  )
+  .then(result => {
+    User.findOne().then(user => {
+      console.log("inside find user");
+      console.log(user)
+      if (!user) {
+        const user = new User({
+          name: 'me',//'userCSE341',//'me',
+          email: 'me@me.com',//cse341@me.com',
+          cart: {
+            items: []
+          }
+        });
+        user.save();
+      }
+    
+    });
+    
+
+    app.listen(PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+  // .use('/', routes)
+ // .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 /*
 // Route setup. You can implement more in the future!
 const ta01Routes = require('./routes/ta01');

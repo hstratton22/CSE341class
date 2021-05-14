@@ -18,7 +18,13 @@ main {
 form {
   display: inline;
 }
+.image {
+  height: 20rem;
+}
 
+.image img {
+  height: 100%;
+}
 .main-header {
     width: 100%;
     height: 3.5rem;
@@ -30,8 +36,10 @@ form {
 
 .main-header__nav {
     height: 100%;
-    display: none;/*flex;*/
+    width:100%;
+    display: flex;
     align-items: center;
+    justify-content:space-between;
 }
 
 .main-header__item-list {
@@ -190,6 +198,16 @@ form {
   .btn:hover,
   .btn:active {
     background-color:#690052;/* #00695c;*/
+    color: white;
+  }
+  .btn.danger {
+    color: red;
+    border-color: red;
+  }
+  
+  .btn.danger:hover,
+  .btn.danger:active {
+    background: red;
     color: white;
   }
   @media (min-width: 768px) {
