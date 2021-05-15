@@ -51,6 +51,7 @@
             <a class="<%= path === '/products' ? 'active' : '' %>"
                 href="/proveAssignments/prove04/products">Products</a>
         </li>
+        <% if (isAuthenticated) { %>
         <li class="mobile-nav__item">
             <a class="<%= path === '/cart' ? 'active' : '' %>" href="/proveAssignments/prove04/cart">Cart</a>
         </li>
@@ -67,5 +68,17 @@
                 href="/proveAssignments/prove04/admin/products">Admin Products
             </a>
         </li>
+        <% } %>
+        <% if (!isAuthenticated) { %>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/proveAssignments/prove04/login">Login</a>
+            </li>
+        <% } else { %>
+            <li class="mobile-nav__item">
+                <form action="/proveAssignments/prove04/logout" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        <% } %>
     </ul>
 </nav>
