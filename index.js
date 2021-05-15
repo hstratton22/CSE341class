@@ -31,11 +31,11 @@ const corsOptions = {
 };
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
 //"mongodb+srv://userCSE341class:cDqVlnEHSQkuE4bZ@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority";
-const MONGODB_URI = process.env.MONGODB_URL ||'mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop';//?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGODB_URI ||'mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop';//?retryWrites=true&w=majority';
 
 const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URI, 
+  uri: MONGODB_URL, 
   collection: 'sessions'
 });
 
@@ -88,7 +88,7 @@ app
 
 mongoose
   .connect(//other account('mongodb+srv://heatherS:rzdW8iGaPSvM35rv@cluster0.3uz0q.mongodb.net/shop?retryWrites=true&w=majority')
-  MONGODB_URI, options
+  MONGODB_URL, options
   )
   .then(result => {
     User.findOne().then(user => {
