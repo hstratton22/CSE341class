@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 exports.getLogin = (req, res, next) => {
     //req.isLoggedin = true;
-    //console.log(req.get('Cookie'));
+    console.log(req.get('Cookie'));
     const isLoggedIn = req
         .get('Cookie')
         .split(';')[0]
