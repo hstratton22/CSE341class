@@ -20,7 +20,7 @@ const path = require('path');
 const routes = require('./routes');
 //const { use } = require('./routes');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
-const User = require('./routes/proveRoutes/prove04/models/user');
+const User = require('./routes/proveRoutes/prove05/models/user');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
@@ -91,21 +91,21 @@ mongoose
   MONGODB_URL, options
   )
   .then(result => {
-    User.findOne().then(user => {
-      //console.log("inside find user");
-      //console.log(user)
-      if (!user) {
-        const user = new User({
-          name: 'me',//'userCSE341',//'me',
-          email: 'me@me.com',//cse341@me.com',
-          cart: {
-            items: []
-          }
-        });
-        user.save();
-      }
+    // User.findOne().then(user => {
+    //   //console.log("inside find user");
+    //   //console.log(user)
+    //   if (!user) {
+    //     const user = new User({
+    //       name: 'me',//'userCSE341',//'me',
+    //       email: 'me@me.com',//cse341@me.com',
+    //       cart: {
+    //         items: []
+    //       }
+    //     });
+    //     user.save();
+    //   }
     
-    });
+    // });
     
 
     app.listen(PORT);

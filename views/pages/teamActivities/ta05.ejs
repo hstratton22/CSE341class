@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../../includes/header.ejs %>
+    <!--<style>
+    .btn {
+      border: 1px solid black;
+      margin: .5rem;
+    }
+  </style>-->
+    <% switch(style) { case '1' : %>
+      <link rel="stylesheet" type="text/css" href="/stylesheets/theme1.css" />
+      <% break; case '2' : %>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/theme2.css" />
+        <% break; case '3' : %>
+          <link rel="stylesheet" type="text/css" href="/stylesheets/theme3.css" />
+          <% break; default: %>
+            <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+            <% } %>
+</head>
+
+<body>
+
+  <% include ../../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <p>This is the placeholder for Team Activity 05</p>
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        <form action="/teamActivities/ta05/change-style" method="POST">
+          <!--<button type="submit" name="style" class="btn">Style</button>-->
+          <!-- The idea is that each option points contains a value that selects a stylesheet to include in the header -->
+          <label for='css_style'>Choose your theme</label>
+          <select id="css_style" name="css_style">
+            <option value='0'>
+              Default (Blue)
+            </option>
+            <option value='1'>
+              Style 1 (Green)
+            </option>
+            <option value='2'>
+              Style 2 (Purple)
+            </option>
+            <option value='3'>
+              Style 3 (Orange)
+            </option>
+          </select>
+          <button type="submit">Change Style</button>
+        </form>
+      </div>
+      <div>
+        <form action="/teamActivities/ta05/counter" method="POST">
+          <input type="hidden" name="constant" value="1">
+          <button type="submit" class="btn btn-default">+</button>
+        </form>
+        <form action="/teamActivities/ta05/counter" method="POST">
+          <input type="hidden" name="constant" value="-1">
+          <button type="submit" class="btn btn-default">-</button>
+        </form>
+      </div>
+      <div>
+        <form action="/teamActivities/ta05/reset" method="POST">
+          <input type="hidden" name="reset" value="true">
+          <button type="submit" class="btn btn-default">Reset</button>
+        </form>
+      </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
