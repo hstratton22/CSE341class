@@ -12,7 +12,7 @@
  *******************************************************************************/
 //https://github.com/hstratton22/CSE341class
 //  https://cse341class.herokuapp.com/
-//submitted for WK3--don't touch yet.
+//submitted for WK5--don't touch yet.
 // Our initial setup (package requires, port number setup)
 const express = require('express');
 const bodyParser = require('body-parser');
