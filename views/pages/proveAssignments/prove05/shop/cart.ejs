@@ -1,4 +1,5 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/prove03/css/cart.css">
     </head>
 
     <body>
@@ -8,15 +9,30 @@
                     <ul class="cart__item-list">
                         <% products.forEach(p=> { %>
                             <li class="cart__item">
-                                <h1>
+                                <h2>
                                     <%= p.productId.title %>
-                                </h1>
-                                <h2>Quantity: <%= p.quantity %>
                                 </h2>
+                                <div class="cart-quantity">
+                                <h3>Quantity: <%= p.quantity %>
+                                </h3>
+
+                           <!--     <form action="cart-counter" method="POST">
+                                    <input type="hidden" name="constant" value="1">
+                                    <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="btn btn-counter">+</button>
+                                </form>
+                                <form action="cart-counter" method="POST">
+                                    <input type="hidden" name="constant" value="-1">
+                                    <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="btn btn-counter">-</button>
+                                </form>-->
+                            </div>
                                 <form action="cart-delete-item" method="POST">
                                     <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                    <button class="btn danger" type="submit">Delete</button>
+                                    <button class="btn danger" type="submit">Remove</button>
                                 </form>
                             </li>
 

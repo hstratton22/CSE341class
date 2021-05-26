@@ -14,7 +14,10 @@ exports.getProducts = (req, res, next) => {
             });
         })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
         });
 };
 
@@ -30,7 +33,12 @@ exports.getProduct = (req, res, next) => {
                 //isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
             });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
 };
 
 exports.getIndex = (req, res, next) => {
@@ -38,13 +46,16 @@ exports.getIndex = (req, res, next) => {
         .then(products => {
             res.render('pages/proveAssignments/prove05/shop/index', {
                 prods: products,
-                pageTitle: 'Shop',
+                pageTitle: 'E-commerce tutorial Shop Home ',
                 path: '/',
                 ///isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
             });
         })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
         });
 };
 
@@ -63,7 +74,12 @@ exports.getCart = (req, res, next) => {
                 //isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
             });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
 };
 
 exports.postCart = (req, res, next) => {
@@ -78,7 +94,10 @@ exports.postCart = (req, res, next) => {
             res.redirect('./cart');
         })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
         });
 };
 
@@ -89,7 +108,12 @@ exports.postCartDeleteProduct = (req, res, next) => {
         .then(result => {
             res.redirect('/proveAssignments/prove05/cart');//pages/  need shop?
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
 };
 exports.postOrder = (req, res, next) => {
     req.user//req.session.user//req.user
@@ -116,7 +140,12 @@ exports.postOrder = (req, res, next) => {
         .then(() => {
             res.redirect('orders');//check path ?proveAssignments/prove04/shop/orders
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
 };
 
 
@@ -130,9 +159,38 @@ exports.getOrders = (req, res, next) => {
                 //isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
             });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            //console.log(err);
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
 
 };
+
+// exports.postCounter = (req, res, next) => {
+//     const prodId = req.body.productId;
+//     const counterChange = Number(req.body.constant);
+//     console.log(prodId, counterChange);
+//     Product.findById(prodId)
+//         .then(product => {
+//             return req.user.updateCartQuantity(product, counterChange);
+//         })
+//     // req.user
+//     //     .updateCartQuantity(prodId, counterChange)
+//         .then(result => {
+//             res.redirect('./cart');
+//         })
+//         .catch(err => //console.log(err));
+//         {
+//             const error = new Error(err);
+//             error.httpStatusCode = 500;
+//             return next(error);
+//         })
+
+
+
+// }
     //const products = Product.fetchAll();
     //console.log('another in the middleware');
     //res.send('<h1>Hello from Express!</h1>');

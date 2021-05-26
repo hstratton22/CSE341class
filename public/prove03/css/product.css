@@ -11,6 +11,10 @@
     margin: 1rem;
 }
 
+.product-item-scroll {
+    display:inline-block;
+    max-width: 40%;;
+  }
 .product__title {
     font-size: 1.2rem;
     text-align: center;
@@ -24,4 +28,36 @@
 
 .product__description {
     text-align: center;
+    overflow: auto;
+    /*width: 200px;
+    overflow: scroll;*/
+}
+/*or remove this and leave uncomment .card__image img*/
+/***for index.ejs, products.ejs, product-list.ejs***/
+.card__image {
+    overflow:hidden;
+    max-width: 20rem; /*100%;*/
+    max-height: 200px;/*max-*/
+}
+.card__image img {
+    /*max-width: 100%;
+    max-height: 200px;*/
+    max-width:100%;
+    display:block;
+}
+.card__image img:hover {
+transform: scale(1.75);
+}
+@media (max-width: 768px) {
+
+
+.card__actions {
+    display: flex;
+    flex-direction:column;
+    gap:.25rem;
+}
+.product-item-scroll {
+    max-width: 60%;
+}
+
 }
