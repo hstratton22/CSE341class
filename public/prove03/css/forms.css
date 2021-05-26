@@ -25,3 +25,8 @@
 .form-control textarea.invalid {
   border-color:red;
 }
+.login-form {
+    border:2px solid #12B554;
+    border-radius:10px;
+    padding:.75rem;
+}
