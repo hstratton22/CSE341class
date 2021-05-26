@@ -272,10 +272,10 @@ form {
   
     
   }
-  .footer a{
+  .logo a{
     font-family: fantasy;
     font-size: 1.25rem;;
-    color:#12B554;
+    color:#05692E;/*#12B554;*/
     background-color: white;
     padding-left:.25rem;
     padding-right:.25rem;
@@ -283,9 +283,12 @@ form {
     text-decoration: none;
     font-weight: bold;
   }
-  .footer a:hover {
+  .logo a:hover {
     color:#690052
   }
+  /*.logo {
+    color:#05692E;
+  }*/
   @media (min-width: 768px) {
     .main-header__nav {
       display: flex;
