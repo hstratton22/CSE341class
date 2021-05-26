@@ -286,9 +286,13 @@ form {
   .logo a:hover {
     color:#690052
   }
-  /*.logo {
+  .green a{
     color:#05692E;
-  }*/
+    text-decoration: none;
+  }
+  .green a:hover{
+    color:#690052;
+  }
   @media (min-width: 768px) {
     .main-header__nav {
       display: flex;
