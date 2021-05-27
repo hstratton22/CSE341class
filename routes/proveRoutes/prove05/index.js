@@ -1,5 +1,6 @@
 //question with the mongoose connection...how to export? or what
 const express = require('express');
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const errorController = require('./controllers/error');
 const router = express.Router();
@@ -10,7 +11,7 @@ const User = require('./models/user');
 const csrf = require('csurf');
 const flash = require('connect-flash');
 //const User = require('../prove04/models/user');
-
+router.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 router.use(bodyParser.urlencoded({ extended: false }));
 //router.use('/favicon.ico', express.static('images/favicon.ico'));
 const adminRoutes = require('./routes/admin');
