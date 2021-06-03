@@ -221,21 +221,21 @@ exports.postReset = (req, res, next) => {
     crypto.randomBytes(32, (err, buffer) => {
         if (err) {
             console.log(err);
-            return res.redirect('/reset');
+            return res.redirect('reset');
         }
         const token = buffer.toString('hex');
         User.findOne({ email: req.body.email })
             .then(user => {
                 if (!user) {
                     req.flash('error', 'No account with that email found.');
-                    return res.redirect('/reset');
+                    return res.redirect('reset');
                 }
                 user.resetToken = token;
                 user.resetTokenExpiration = Date.now() + 3600000;
                 return user.save();
             })
             .then(result => {
-                res.redirect('/');
+                res.redirect('login');// /  
                 transporter.sendMail({
                     to: req.body.email,
                     from: 'str19023@byui.edu',

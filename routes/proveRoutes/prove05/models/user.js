@@ -67,8 +67,14 @@ userSchema.methods.removeFromCart = function(productId){
 //   if (cartProductIndex >= 0) {
 //     newQuantity = this.cart.items[cartProductIndex].quantity + counterChange;
 //     updatedCartItems[cartProductIndex].quantity = newQuantity;
+//console.log(updatedCartItems[cartProductIndex].quantity );
 //     // if (updatedCartItems[cartProductIndex].quantity <= 0){
 //     //   console.log("0 or less");
+//updatedCartItems[cartProductIndex].quantity = 0;
+// const updatedCartItems2 = this.cart.items.filter(item => {
+//      //   return item.productId.toString() !== productId.toString();
+//      // });
+//      // this.cart.items = updatedCartItems2;
 //     // }
 //   } else {
 //     updatedCartItems.push({
