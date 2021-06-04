@@ -242,10 +242,10 @@ exports.postReset = (req, res, next) => {
                     subject: 'Password Reset',
                     html: `<p>You requested a password reset</p>
             <p>Click this <a href=
-            "http://localhost:5000/reset/${token}">link</a> to set a new password.</p>
+            "https://cse341class.herokuapp.com/proveAssignments/prove05/reset/${token}">link</a> to set a new password.</p>
             `
                     //change this address to what?
-                });
+                });//https://localhost:5000/reset/${token}
 
             })
             .catch(err => { //console.log(err); 
