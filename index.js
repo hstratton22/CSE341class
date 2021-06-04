@@ -27,6 +27,8 @@ const session = require('express-session');
 const cors = require('cors');
 //const PRIVATE = require('./private');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const multer = require('multer');
+
 const corsOptions = {
   origin: "https://cse341class.herokuapp.com/",
   optionsSuccessStatus: 200
@@ -40,9 +42,27 @@ const store = new MongoDBStore({
   uri: MONGODB_URL, 
   collection: 'sessions'
 });
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + '-' + file.originalname);
+  }
+});
 
-app.use(bodyParser.urlencoded({ extended: false }));
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+
+}
+app.use(bodyParser.urlencoded({ extended: false }))
+.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(
   session({
   secret: 'my secret', 

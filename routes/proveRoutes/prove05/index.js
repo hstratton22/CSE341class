@@ -10,6 +10,8 @@ const session = require('express-session');
 const User = require('./models/user');
 const csrf = require('csurf');
 const flash = require('connect-flash');
+//const multer = require('multer');
+
 //const User = require('../prove04/models/user');
 router.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -19,9 +21,30 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 const csrfProtection = csrf();
+//
+
+// const fileStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'images');
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, new Date().toISOString() + '-' + file.originalname);
+//   }
+// });
+
+// const fileFilter = (req, file, cb) => {
+//   if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+//     cb(null, true);
+//   } else {
+//     cb(null, false);
+//   }
+
+// }
 router
+  //.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'))
   //.use(express.static(path.join(__dirname, 'public', 'provePublic', 'prove03', 'public')))
   .use(express.static(path.join(__dirname, 'public',)))
+  .use('/images', express.static(path.join(__dirname, 'images')))
   //.use('/favicon.ico', express.static('images/favicon.ico'))
   .use(csrfProtection)//here or main index.js?
   .use(flash())//here or main index.js?
@@ -59,7 +82,7 @@ router.use((req, res, next) => {
       next(new Error(err));
     });
 });
-
+//router.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
 router.use('/admin', adminRoutes)
   .use(shopRoutes)
   .use(authRoutes)
@@ -68,10 +91,10 @@ router.get('/500', errorController.get500)
   .use((err, req, res, next) => {
     //res.status(error.httpStatusCode).render(...);
     //res.redirect('/500');
-    res.status(500).render('pages/proveAssignments/prove05/500', { 
-      pageTitle: 'Error Occurred', 
+    res.status(500).render('pages/proveAssignments/prove05/500', {
+      pageTitle: 'Error Occurred',
       path: '/500',
-      isAuthenticated :  req.session.isLoggedIn 
+      isAuthenticated: req.session.isLoggedIn
     });
   });
 
