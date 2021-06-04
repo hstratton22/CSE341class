@@ -19,7 +19,8 @@ exports.getProducts = (req, res, next) => {
     //             //isAuthenticated: req.session.isLoggedIn//req.isLoggedIn
     //         });
     //     })const page = +req.query.page || 1;
-  let totalItems;
+    const page = +req.query.page || 1;
+    let totalItems;
 
   Product.find()
     .countDocuments()
