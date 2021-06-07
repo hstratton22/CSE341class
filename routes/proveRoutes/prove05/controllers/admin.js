@@ -198,7 +198,7 @@ exports.getProducts = (req, res, next) => {
 
 //exports.postDeleteProduct = (req, res, next) => {
 exports.deleteProduct = (req, res, next) => {
-    const prodId = req.body.productId;
+    const prodId = req.params.productId;//body
     Product.findById(prodId)
 
         .then(product => {

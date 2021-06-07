@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+      </div>
+    </div>
+    <div class="container">
+      <form class="center" action="/teamActivities/ta08/search" method="POST"><!--../../routes/teamRoutes/ta03-->
+        <label>Enter search tag <input type="text" name="input1"></label>
+        <button type="submit">Search</button>
+      </form>
+
+    </div>
+    <% if (items === null) { %>
+      <h2 class="center"> items is null</h2>
+
+      <% } else if (items.length == 0 ) { %>
+        <h2 class="center"> No products. Enter a search word.</h2>
+
+      <% } else if (items.length > 0 ) { %>
+       
+      <div >
+        <h2 >Search Results: </h2>
+        <% for (let item of items) { %>
+        <ul class="results">
+
+          <li><p><%= item.name %></p>
+            <p>$<%= item.price %></p>
+            <img src="<%= item.imageUrl %>" alt="<%= item.name%>" width="200">
+            <p><%= item.description %></p>
+          </li>
+          
+        </ul>
+
+      </div>
+      <% } %>
+      <section class="pagination">
+        <% if (currentPage !== 1 && previousPage !== 1) { %>
+            <a href="?page=1">1</a>
+            <% } %>
+        
+        <% if (hasPreviousPage) { %>
+        <a href="?page=<%= previousPage %>"><%= previousPage %></a>
+        <% } %>
+        <a href="?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+        <% if (hasNextPage) { %>
+            <a href="?page=<%= nextPage %>"><%= nextPage %></a>
+            <% } %>
+        <% if (lastPage !== currentPage && nextPage !== lastPage) { %> 
+        <a href="?page=<%= lastPage %>"><%= lastPage %></a>
+        <% } %>
+    </section>
+    
+
+      <% }  else { %>
+        <h2> No matches found</h2>
+        <% } %>
+
+
+</body>
+
+</html>
