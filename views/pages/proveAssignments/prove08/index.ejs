@@ -18,13 +18,13 @@
             <h1>JSON Results</h1>
               <% for(var i=0; i<data.length; i++) {%>
                 <% if(i % 3 == 0) { %>
-                  <div class="container">
+                  <div class="container bytwo">
                 <% } %>
-                  <div class="card">
-                    <img src="<%= data[i].imageUrl %>" alt="t" class="cardImg">
-                    <div class="cardContainer">
+                  <div class="card border">
+                    <img src="<%= data[i].imageUrl %>" alt="t" class="cardImg four_00">
+                    <div class="cardContainer inside">
                       <h4><b><%= data[i].name %></b></h4>
-                      <h6><%= data[i].price %></h6>
+                      <h6>$<%= data[i].price %></h6>
                       <p><%= data[i].description %></p>
                     </div>
                 <% if(i % 3 == 2) { %>

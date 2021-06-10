@@ -54,12 +54,14 @@ const renderIndex = (req, res, json) => {
 
     const filteredData = global.jsonResponse.filter(x =>
         x.name.toLowerCase().includes(searchedValue.toLowerCase())
+        
     )
+    console.log("filteredData", filteredData.length);
 
     let stuff = {
         data: filteredData.slice(indexStart, indexEnd), // For JSON/Array and not Mongoose, .slice() works best.
         path: 'proveAssignments/03',
-        title: 'Lesson 3 Prove Assignment',
+        title: 'Lesson 8 Prove Assignment',
         searchedValue: searchedValue,
         page: page,
         numPages: Math.ceil(filteredData.length / ITEMS_PER_PAGE)
@@ -82,7 +84,6 @@ exports.processJson = (req, res, next) => {
 
             response.on('end', function () {
                 global.jsonResponse = JSON.parse(body)
-                // Simplifying W03 rendering...
                 renderIndex(req, res, global.jsonResponse)
             })
         })
@@ -91,7 +92,7 @@ exports.processJson = (req, res, next) => {
         })
 }
 
-// New code for W08...
+
 exports.getIndex = (req, res, next) => {
     renderIndex(req, res, global.jsonResponse) // Render page.
 }

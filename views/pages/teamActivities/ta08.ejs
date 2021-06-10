@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="container">
-      <form class="center" action="/teamActivities/ta08/search" method="POST"><!--../../routes/teamRoutes/ta03-->
+      <form class="center" action="/teamActivities/ta08" method="POST"><!--../../routes/teamRoutes/ta03   // /search-->
         <label>Enter search tag <input type="text" name="input1"></label>
         <button type="submit">Search</button>
       </form>
@@ -32,7 +32,7 @@
       <div >
         <h2 >Search Results: </h2>
         <% for (let item of items) { %>
-        <ul class="results">
+        <ul class="results center">
 
           <li><p><%= item.name %></p>
             <p>$<%= item.price %></p>
@@ -50,14 +50,14 @@
             <% } %>
         
         <% if (hasPreviousPage) { %>
-        <a href="?page=<%= previousPage %>"><%= previousPage %></a>
+        <a href="?page=<%= previousPage %>"> previous <%= previousPage %></a>
         <% } %>
-        <a href="?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+        <a href="?page=<%= currentPage %>" class="active">current/NEXT? <%= currentPage %></a>
         <% if (hasNextPage) { %>
-            <a href="?page=<%= nextPage %>"><%= nextPage %></a>
+            <a href="?page=<%= nextPage %>"> next <%= nextPage %></a>
             <% } %>
         <% if (lastPage !== currentPage && nextPage !== lastPage) { %> 
-        <a href="?page=<%= lastPage %>"><%= lastPage %></a>
+        <a href="?page=<%= lastPage %>"> last <%= lastPage %></a>
         <% } %>
     </section>
     

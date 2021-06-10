@@ -123,6 +123,7 @@ ul.results {
   flex-wrap:wrap;
   border:1px solid black;
   width:45%;
+  margin-left:.25rem;
 }
 .results li{
   display: flex;
@@ -132,3 +133,31 @@ ul.results {
 .results li p {
   max-width:100%;
 }
+.four_00 {
+  max-width:400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin:auto;
+
+}
+.inside {
+  display:flex;
+  flex-direction:column;
+
+}
+.border {
+  border:1px solid grey;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius:10px;
+  padding:.5rem;
+  margin-top:.25rem;
+  max-width: 425px;
+  display:flex;
+  flex-direction:column
+}
+ @media (min-width: 768px){
+   .bytwo {
+     display: flex;
+     flex-direction: row;
+     
+   }
+ }
