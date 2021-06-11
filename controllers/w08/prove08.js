@@ -5,18 +5,18 @@ const fetch = require('node-fetch');
 const ITEMS_PER_PAGE = 10;
 const bodyParser = require('body-parser');
 let items = [];
-//let foundDisplay = [];
+// let foundDisplay = [];
 const url = "https://byui-cse.github.io/cse341-course/lesson03/items.json";
 let settings = { method: "GET" };
 // let totalItems = 0;
-//let searchWord;
+let searchWord;
 
 const renderPage = (req, res, json) => {
     searchWord = req.body.searchValue || req.query.searchValue || '';//
     let page = +req.query.page || 1;
     console.log("searchWord", searchWord, "page", page);
-    let foundDisplay = [];
     let totalItems = 0;
+    let foundDisplay = [];
 
     const start = (page - 1) * ITEMS_PER_PAGE // Item index to start on...
     const end = ITEMS_PER_PAGE//page * 
