@@ -16,7 +16,7 @@
     </div>
     <div class="container">
       <form class="center" action="/teamActivities/ta08" method="POST"><!--../../routes/teamRoutes/ta03   // /search-->
-        <label>Enter search tag <input type="text" name="input1"></label>
+        <label>Enter search tag <input type="text" name="searchValue"></label>
         <button type="submit">Search</button>
       </form>
 
@@ -30,6 +30,7 @@
       <% } else if (items.length > 0 ) { %>
        
       <div >
+        <h2><%= searchedValue %></h2>
         <h2 >Search Results: </h2>
         <% for (let item of items) { %>
         <ul class="results center">
@@ -46,18 +47,18 @@
       <% } %>
       <section class="pagination">
         <% if (currentPage !== 1 && previousPage !== 1) { %>
-            <a href="?page=1">1</a>
+            <a href="?page=1<%= (searchedValue) ? `&searchValue=${searchedValue}` :  '' %>">1</a>
             <% } %>
         
         <% if (hasPreviousPage) { %>
-        <a href="?page=<%= previousPage %>"> previous <%= previousPage %></a>
+        <a href="?page=<%= previousPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  '' %>"><%= previousPage %></a>
         <% } %>
-        <a href="?page=<%= currentPage %>" class="active">current/NEXT? <%= currentPage %></a>
+        <a href="?page=<%= currentPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  '' %>" class="active"><%= currentPage %></a>
         <% if (hasNextPage) { %>
-            <a href="?page=<%= nextPage %>"> next <%= nextPage %></a>
+            <a href="?page=<%= nextPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  '' %>"><%= nextPage %></a>
             <% } %>
         <% if (lastPage !== currentPage && nextPage !== lastPage) { %> 
-        <a href="?page=<%= lastPage %>"> last <%= lastPage %></a>
+        <a href="?page=<%= lastPage %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  '' %>"> <%= lastPage %></a>
         <% } %>
     </section>
     

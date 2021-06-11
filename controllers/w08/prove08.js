@@ -2,30 +2,35 @@
 //actual last page not displaying?
 //correct number items displaying- possibly all related
 const fetch = require('node-fetch');
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 10;
 const bodyParser = require('body-parser');
 let items = [];
-let foundDisplay = [];
+//let foundDisplay = [];
 const url = "https://byui-cse.github.io/cse341-course/lesson03/items.json";
 let settings = { method: "GET" };
-let totalItems = 0;
+// let totalItems = 0;
+//let searchWord;
 
 const renderPage = (req, res, json) => {
-    let searchWord = req.body.input1  || '';//|| req.query.input1
+    searchWord = req.body.searchValue || req.query.searchValue || '';//
     let page = +req.query.page || 1;
-    console.log("searchWord", searchWord, "page", page)
+    console.log("searchWord", searchWord, "page", page);
+    let foundDisplay = [];
+    let totalItems = 0;
 
     const start = (page - 1) * ITEMS_PER_PAGE // Item index to start on...
-    const end = page * ITEMS_PER_PAGE
+    const end = ITEMS_PER_PAGE//page * 
     console.log('start', start, "end", end);
     if (searchWord == '' || typeof searchWord === 'undefined' ) {
         console.log(' empty string  or type is undefined')
         return res.render('pages/teamActivities/ta08', {
             title: 'WK 08 ',
             path: '/ta08',
-            items: foundDisplay.splice(start, end),//foundDisplay,
+            searchedValue: searchWord,
+            //page: page,
+            items: items.splice(start, end),//foundDisplay.splice(start, end),
             currentPage: page,
-            hasNextPage: ITEMS_PER_PAGE * page < totalItems || null,
+            hasNextPage: ITEMS_PER_PAGE * page < totalItems,// || null,
             hasPreviousPage: page > 1 || null,
             nextPage: page + 1 || null,
             previousPage: page - 1 || null,
@@ -56,7 +61,9 @@ const renderPage = (req, res, json) => {
     res.render('pages/teamActivities/ta08', {
         title: 'WK 08 Results',
         path: '/ta08',
-        items: foundDisplay.splice(start, end),//foundDisplay,
+        items: foundDisplay.splice(start, end),
+        searchedValue: searchWord,
+        //page: page,
         currentPage: page,
         hasNextPage: ITEMS_PER_PAGE * page < totalItems,
         hasPreviousPage: page > 1,
@@ -74,6 +81,7 @@ exports.callJSON = (req, res, next) => {
         .then(function (jsonObject) {
             //console.log('jsonObject is real');
             items = jsonObject;
+            totalItems= items.length;
             console.log("items length", items.length)
             renderPage(req, res, items)
         })
