@@ -1,0 +1,27 @@
+body {
+    background-color: red;
+}
+
+.pokemon {
+    text-align: center;
+    border: solid 2px #343a40;
+    background-color: #868e96;
+    color: white;
+    
+}
+.center {
+    text-align:center;
+    margin:auto;
+}
+a  {
+    text-decoration: none;
+  }
+  .white {
+      color:white;
+  }
+  .white:hover{
+      color:black;
+  }
+  h2.big {
+      font-size: 100pt;
+  }

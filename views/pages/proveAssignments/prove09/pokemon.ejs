@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="/stylesheets/pokecss.css" >
+
+</head>
+<body>
+    <div class="center">
+        <h1>List: </h1>
+    </div>
+    <div class="pokemon"> 
+        <% pokemonList.forEach( pokemon => { %>
+        <div><h4><%= pokemon.name.toUpperCase() %></h4></div>
+    <% }) %>
+    </div>
+    <div class="center">
+        <% if(page !=1) { %>
+        <a href="/proveAssignments/prove09/pokemon/1"><button>First</button></a><!--http://localhost:5000-->
+    <a href = "/proveAssignments/prove09/pokemon/<%=parseInt(page) - 1 %>"><button>Previous</button></a><!--http://localhost:5000-->
+<% } %>
+<button><%= page %></button>
+<% if (page != 112) { %>
+<a href="/proveAssignments/prove09/pokemon/<%=parseInt(page) + 1 %>"><button>Next</button></a><!--http//localhost:5000-->
+<a href="/proveAssignments/prove09/pokemon/112"><button>Last</button></a><!--https://localhost:5000-->
+<% } %>
+
+    </div>
+</body>
+</html>

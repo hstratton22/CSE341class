@@ -154,6 +154,17 @@ ul.results {
   display:flex;
   flex-direction:column
 }
+.nameList {
+  margin: auto;
+  border:3px double red;
+  color:white;
+  background-color: black;
+}
+.nameList li {
+  
+  margin-top:.25rem;
+  font-weight: bold;
+}
  @media (min-width: 768px){
    .bytwo {
      display: flex;

@@ -7,6 +7,7 @@ proveRoutes
     //.use('/prove04', require('./prove04/'))
     .use('/prove05', require('./prove05/'))
     .use('/prove08', require('./prove08/'))
+    .use('/prove09', require('./prove09/'))
     .get('/,', (req, res, next) => { 
         res.render('pages/proveAssignments/', {
             pageTitle: 'Prove Assignments',

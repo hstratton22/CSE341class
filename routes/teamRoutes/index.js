@@ -7,6 +7,8 @@ routes
     .use('/ta04', require('./ta04'))
     .use('/ta05', require('./ta05'))
     .use('/ta08', require('./ta08'))
+    .use('/ta09', require('./ta09'))
+    .use('/ta10', require('./ta10'))
     .get('/', (req, res, next) => {
         res.render('pages/teamActivities/', {
             pageTitle: 'Team Activities',

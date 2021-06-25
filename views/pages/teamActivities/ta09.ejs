@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../../includes/header.ejs %>
+  <title><%= title %></title>
+</head>
+<body>
+    <% include ../../includes/nav.ejs %><div class="container center">
+        <h1>Pokemon:</h1>
+        <ul id="pokeList" class="">
+        </ul>
+        <div class="actions_container">
+            <!-- If you want to include your listeners inline... -->
+            <!-- <button id="prevBtn" onclick="populatePrev()">Previous</button>
+            <button id="nextBtn" onclick="populateNext()">Next</button> -->
+            <!-- WIth listeners set from script... -->
+            <button id="prevBtn">Previous</button>
+            <button id="nextBtn">Next</button>
+        </div>
+    </div>
+    <!--NOTE: Declare script here.
+        Entire HTML page should be allowed to load
+        before executing javascript.-->
+    <script src="/scripts/ta09.js" ></script>
+    </body>
+    </html>
