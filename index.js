@@ -129,9 +129,19 @@ mongoose
     
     // });
     
-
-    app.listen(PORT);
+    const server = app.listen(PORT);
+    // const io = require('./socket').init(server);
+    const io = require('socket.io')(server)
+    io.on('connection', socket => {
+      console.log('Client connected')
+      socket.on('new-name', () => {
+        socket.broadcast.emit('update-list')
+      
+    })
   })
+})
+    //app.listen(PORT);
+  //})
   .catch(err => {
     console.log(err);
   });
