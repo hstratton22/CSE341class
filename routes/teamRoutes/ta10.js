@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // Path to your JSON file, although it can be hardcoded in this file.
-const dummyData = require('../../data/ta10-data.json');
+const dummyData = require('../../data/ta10-data2.json');
 
 router.use(bodyParser.json());
 
@@ -13,10 +13,15 @@ router.get('/fetchAll', (req, res, next) => {
 });
 
 router.post('/insertName', (req, res, next) => {
+    console.log("req.body inside /insertName", req.body);
+    console.log("newName", req.body.newName);
+    console.log("alias", req.body.alias);
+    
     if (req.body.newName !== undefined) {
         const newName = req.body.newName;
+        const alias = req.body.alias || "undefined";
         if (!dummyData.avengers.some(a => a.name === newName)) {
-            dummyData.avengers.push({ name: newName });
+            dummyData.avengers.push({ name: newName, AKA: alias });
             res.sendStatus(200);
         }
 
